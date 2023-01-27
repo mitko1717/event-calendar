@@ -1,83 +1,32 @@
-import ArrowLeft from "@/icons/ArrowLeft";
-import ArrowRight from "@/icons/ArrowRight";
-import DateIcon from "@/icons/Date";
-import { IMonth } from "@/interfaces";
-import Button from "@mui/material/Button/";
-import { useAppSelector } from "../hooks/redux";
+import { useAppSelector } from "@/hooks/redux";
+import { FC, useState } from "react";
+import { IDay } from "@/interfaces";
 import { useActions } from "../hooks/actions";
-import { useEffect, useState } from "react";
-import DatePicker from "./DatePicker";
 
-interface CalendarDataProps {
-  calendar: IMonth[];
+const Calendar: FC = () => {
+    const { chosenMonth } = useAppSelector((state) => state.calendar);
+    const {
+        setChosenDay
+      } = useActions();
+
+  }
+  return (
+    <div className="w-[90%] m-auto mt-6 grid h-auto grid-cols-7 grid-rows-5 gap-1">
+        {chosenMonth.days.map(day => {
+            return (
+                <p 
+                key={day.index} 
+                className={`flex w-10% h-[150px] border border-solid border-black p-2 cursor-pointer ${chosenDay?.number === day.number ? "bg-gray" : ""}`} 
+                onClick={() => setChosenDay(day)}>
+                    <div className="flex justify-between w-full">
+                    <span>{day.number}</span>
+                   <span>{day.day}</span>
+                    </div>
+                </p>
+            )
+        })}
+    </div>
+  )
 }
 
-const Calendar = ({ calendar }: CalendarDataProps) => {
-  const { monthIndex, chosenMonth } = useAppSelector((state) => state.calendar);
-  const {
-    increaseMonthIndex,
-    decreaseMonthIndex,
-    setCalendarAfterGetFromServer,
-  } = useActions();
-  const [isOpenDatePicker, setIsOpenDatePicker] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (Array.isArray(calendar) && calendar.length > 0) {
-      setCalendarAfterGetFromServer(calendar);
-    }
-  }, [calendar]);
-
-  const rightArrowClickHandler = () => {
-    increaseMonthIndex();
-  };
-
-  const leftArrowClickHandler = () => {
-    decreaseMonthIndex();
-  };
-
-  const datePickerToggler = () => {
-    setIsOpenDatePicker((prev) => !prev);
-  };
-
-  return (
-    <div>
-      <div className="flex p-2 justify-around h-[50px] items-center relative">
-        <Button variant="contained">
-          <span className="text-3xl font-bold">+</span>
-        </Button>
-
-        <div className="flex h-40px">
-          <span
-            className={`flex items-center cursor-pointer px-2 ${
-              monthIndex === 0 && "pointer-events-none opacity-30"
-            }`}
-            onClick={leftArrowClickHandler}
-          >
-            <ArrowLeft />
-          </span>
-          <p className="w-[120px] text-center">
-            {chosenMonth.month} {chosenMonth.year}
-          </p>
-          <span
-            className={`flex items-center cursor-pointer px-2 ${
-              monthIndex === calendar.length - 1 &&
-              "pointer-events-none opacity-30"
-            }`}
-            onClick={rightArrowClickHandler}
-          >
-            <ArrowRight />
-          </span>
-          <span
-            className="flex items-center border border-solid border-black mx-2 py-1 px-2 cursor-pointer"
-            onClick={datePickerToggler}
-          >
-            <DateIcon />
-          </span>
-          {isOpenDatePicker && <DatePicker calendar={calendar} />}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Calendar;
+export default Calendar

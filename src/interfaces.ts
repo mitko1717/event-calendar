@@ -12,6 +12,14 @@ export interface IMonth {
   days: IDay[];
 }
 
-export type DatePickerProps = {
+export interface DatePickerProps {
   calendar: IMonth[];
-};
+}
+
+export interface ContainerDataProps {
+  calendar: IMonth[];
+}
+
+export interface CalendarDataProps {
+  calendar: IMonth[];
+}

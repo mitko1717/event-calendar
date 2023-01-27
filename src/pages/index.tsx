@@ -1,4 +1,4 @@
-import Calendar from "@/components/Calendar";
+import Container from "@/components/Container";
 import type { GetServerSideProps, NextPage } from "next";
 import { IMonth } from "@/interfaces";
 import { Provider } from "react-redux";
@@ -14,7 +14,7 @@ const Home: NextPage<{ data: IData }> = (props) => {
   return (
     <Provider store={store}>
       <div className="bg-[#3e3e3e] h-[100vh] w-full flex flex-col">
-        <Calendar calendar={calendar} />
+        <Container calendar={calendar} />
       </div>
     </Provider>
   );
