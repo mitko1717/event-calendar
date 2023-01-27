@@ -1,12 +1,17 @@
-export interface Day {
+export interface IDay {
   number: number;
   day: string;
   events: string[];
   index: number;
 }
 
-export interface Month {
+export interface IMonth {
   index: number;
   month: string;
-  days: Day[];
+  days: IDay[];
+}
+
+export interface IYear {
+  year: string;
+  months: IMonth[]
 }
