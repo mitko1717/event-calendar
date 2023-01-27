@@ -1,15 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { articlesApi } from "./articles/articles.api";
+import { calendarApi } from "./calendar/calendar.api";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { articleReducer } from "./articles/articles.slice";
+import { calendarReducer } from "./calendar/calendar.slice";
 
 export const store = configureStore({
   reducer: {
-    [articlesApi.reducerPath]: articlesApi.reducer,
-    article: articleReducer,
+    [calendarApi.reducerPath]: calendarApi.reducer,
+    calendar: calendarReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(articlesApi.middleware),
+    getDefaultMiddleware().concat(calendarApi.middleware),
 });
 
 setupListeners(store.dispatch);

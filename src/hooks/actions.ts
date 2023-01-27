@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "@reduxjs/toolkit";
-import { articleActions } from "../store/articles/articles.slice";
+import { calendarActions } from "../store/calendar/calendar.slice";
 
 const actions = {
-  ...articleActions,
+  ...calendarActions,
 };
 
 export const useActions = () => {

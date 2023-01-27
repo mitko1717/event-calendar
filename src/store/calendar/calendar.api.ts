@@ -1,23 +1,23 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IArticle } from "./../../models/interfaces";
+import { IYear, IMonth } from "@/interfaces";
 
-export const articlesApi = createApi({
+export const calendarApi = createApi({
   reducerPath: "github/api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api.spaceflightnewsapi.net/v3/",
   }),
   refetchOnFocus: true,
   endpoints: (build) => ({
-    getArticles: build.query<IArticle[], number>({
+    getMonth: build.query<IMonth[], number>({
       query: (limit: number = 100) => ({
-        url: `articles?`,
+        url: `calendar?`,
         params: {
           _limit: limit,
         },
       }),
-      transformResponse: (response: IArticle[]) => response,
+      transformResponse: (response: IMonth[]) => response,
     }),
   }),
 });
 
-export const { useGetArticlesQuery } = articlesApi;
+export const { useGetMonthQuery } = calendarApi;
