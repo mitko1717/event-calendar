@@ -4,7 +4,7 @@ import DateIcon from "@/icons/Date";
 import { ContainerDataProps } from "@/interfaces";
 import { useAppSelector } from "../hooks/redux";
 import { useActions } from "../hooks/actions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DatePicker from "./DatePicker";
 import Calendar from "./Calendar";
 import Button from "@mui/material/Button/";
@@ -14,15 +14,8 @@ const Container = ({ calendar }: ContainerDataProps) => {
   const {
     increaseMonthIndex,
     decreaseMonthIndex,
-    setCalendarAfterGetFromServer,
   } = useActions();
   const [isOpenDatePicker, setIsOpenDatePicker] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (Array.isArray(calendar) && calendar.length > 0) {
-      setCalendarAfterGetFromServer(calendar);
-    }
-  }, [calendar]);
 
   const rightArrowClickHandler = () => {
     increaseMonthIndex();

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
 import { IMonth, IDay } from "@/interfaces";
 import { CALENDAR } from "../../../data/calendar";
 
@@ -31,12 +31,9 @@ export const calendarSlice = createSlice({
     setChosenMonth(state, action: PayloadAction<IMonth>) {
       state.chosenMonth = action.payload;
     },
-    setCalendarAfterGetFromServer(state, action: PayloadAction<IMonth[]>) {
-      state.calendar = action.payload;
+    setChosenDay(state, action: PayloadAction<IDay>) {    
+      state.chosenDay = action.payload;      
     },
-    setChosenDay(state, action: PayloadAction<IDay>) {
-      state.chosenDay = action.payload
-    }
   },
 });
 
