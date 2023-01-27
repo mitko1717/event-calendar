@@ -8,10 +8,6 @@ export interface IDay {
 export interface IMonth {
   index: number;
   month: string;
-  days: IDay[];
-}
-
-export interface IYear {
   year: string;
-  months: IMonth[]
+  days: IDay[];
 }

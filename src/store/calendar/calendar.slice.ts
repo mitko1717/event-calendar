@@ -1,23 +1,34 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IYear, IMonth } from "@/interfaces";
+import { IMonth } from "@/interfaces";
+import { CALENDAR } from "../../../data/calendar"
 
 interface State {
-  chosenYear: IYear | null,
-  chosenMonth: IMonth | null;
+  chosenMonth: IMonth,
+  monthIndex: number;
+  calendar: IMonth[];
 }
 
 const initialState: State = {
-  chosenYear: null,
-  chosenMonth: null
+  chosenMonth: CALENDAR[0],
+  monthIndex: 0,
+  calendar: CALENDAR,
 };
 
 export const calendarSlice = createSlice({
   name: "calendar",
   initialState,
   reducers: {
-    setYear(state, action: PayloadAction<IYear>) {
-      state.chosenYear = action.payload;
+    increaseMonthIndex(state) {
+      state.monthIndex = state.monthIndex + 1;
+      state.chosenMonth = state.calendar[state.monthIndex]
     },
+    decreaseMonthIndex(state) {
+      state.monthIndex = state.monthIndex - 1;
+      state.chosenMonth = state.calendar[state.monthIndex]
+    },
+    setChosenMonth(state, action: PayloadAction<IMonth>) {
+      state.chosenMonth = action.payload
+    }
   },
 });
 

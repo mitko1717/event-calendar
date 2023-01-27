@@ -1,10 +1,8 @@
 export const CALENDAR = [
-  {
-    year: "2023",
-    index: 1,
-    months: [{
+      {
       index: 1,
       month: "January",
+      year: "2023",
       days: [
         {
           number: 1,
@@ -197,6 +195,7 @@ export const CALENDAR = [
     {
       index: 2,
       month: "February",
+      year: "2023",
       days: [
         {
           number: 1,
@@ -380,6 +379,7 @@ export const CALENDAR = [
     {
       index: 3,
       month: "March",
+      year: "2023",
       days: [
         {
           number: 1,
@@ -558,14 +558,11 @@ export const CALENDAR = [
           index: 28,
         },
       ]
-    }],
   },
-  {
-    year: "2024",
-    index: 2,
-    months: [{
+    {
       index: 1,
       month: "January",
+      year: "2024",
       days: [
         {
           number: 1,
@@ -758,6 +755,7 @@ export const CALENDAR = [
     {
       index: 2,
       month: "February",
+      year: "2024",
       days: [
         {
           number: 1,
@@ -941,6 +939,7 @@ export const CALENDAR = [
     {
       index: 3,
       month: "March",
+      year: "2024",
       days: [
         {
           number: 1,
@@ -1119,6 +1118,5 @@ export const CALENDAR = [
           index: 28,
         },
       ]
-    }],
-  }
+    }
 ];

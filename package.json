@@ -10,6 +10,10 @@
     "prettier": " npx prettier --write ."
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/material": "^5.11.6",
     "@next/font": "13.1.5",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/node": "18.11.18",

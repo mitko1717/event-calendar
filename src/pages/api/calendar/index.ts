@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { IYear } from "@/interfaces";
+import { IMonth } from "@/interfaces";
 import { CALENDAR } from "../../../../data/calendar";
 
 type Data = {
-  calendar: IYear[];
+  calendar: IMonth[];
 };
 
 export default function handler(

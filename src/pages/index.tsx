@@ -1,15 +1,15 @@
 import Calendar from "@/components/Calendar";
 import type { GetServerSideProps, NextPage } from "next";
-import { IYear } from "@/interfaces";
+import { IMonth } from "@/interfaces";
 import { Provider } from "react-redux";
 import { store } from "../store";
 
 type IData = {
-  calendar: IYear[];
+  calendar: IMonth[];
 };
 
 const Home: NextPage<{ data: IData }> = (props) => {
-  let calendar: IYear[] = props?.data?.calendar
+  let calendar = props?.data?.calendar
   
   return (
     <Provider store={store}>
