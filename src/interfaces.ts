@@ -11,3 +11,7 @@ export interface IMonth {
   year: string;
   days: IDay[];
 }
+
+export type DatePickerProps = {
+  calendar: IMonth[];
+};

@@ -6,8 +6,11 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<IMonth | undefined>
 ) {
-  const { month, year } = req.query as unknown as { month: string, year: string };
-  const monthObj = CALENDAR.find(y => y.year === year && y.month === month)
-  
+  const { month, year } = req.query as unknown as {
+    month: string;
+    year: string;
+  };
+  const monthObj = CALENDAR.find((y) => y.year === year && y.month === month);
+
   res.status(200).json(monthObj);
 }

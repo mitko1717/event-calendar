@@ -9,12 +9,12 @@ type IData = {
 };
 
 const Home: NextPage<{ data: IData }> = (props) => {
-  let calendar = props?.data?.calendar
-  
+  let calendar = props?.data?.calendar;
+
   return (
     <Provider store={store}>
       <div className="bg-[#3e3e3e] h-[100vh] w-full flex flex-col">
-        <Calendar calendar={calendar}/>
+        <Calendar calendar={calendar} />
       </div>
     </Provider>
   );
@@ -28,11 +28,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await result.json();
 
     return {
-      props: { data }
+      props: { data },
     };
   } catch {
     return {
-      props: {}
+      props: {},
     };
   }
 };
