@@ -23,16 +23,16 @@ export const calendarSlice = createSlice({
     increaseMonthIndex(state) {
       state.monthIndex = state.monthIndex + 1;
       state.chosenMonth = state?.calendar[state.monthIndex];
-      state.chosenDay = null
+      state.chosenDay = null;
     },
     decreaseMonthIndex(state) {
       state.monthIndex = state.monthIndex - 1;
       state.chosenMonth = state?.calendar[state.monthIndex];
-      state.chosenDay = null
+      state.chosenDay = null;
     },
     setChosenMonth(state, action: PayloadAction<IMonth>) {
       state.chosenMonth = action.payload;
-      state.chosenDay = null
+      state.chosenDay = null;
     },
     setCalendarAfterGetFromServer(state, action: PayloadAction<IMonth[]>) {
       state.calendar = action.payload;

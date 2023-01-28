@@ -11,10 +11,16 @@ import Button from "@mui/material/Button/";
 import ModalForm from "./ModalForm";
 
 const Container = ({ calendar }: ContainerDataProps) => {
-  const { monthIndex, chosenMonth, chosenDay } = useAppSelector((state) => state.calendar);
-  const { increaseMonthIndex, decreaseMonthIndex, setCalendarAfterGetFromServer } = useActions();
+  const { monthIndex, chosenMonth, chosenDay } = useAppSelector(
+    (state) => state.calendar
+  );
+  const {
+    increaseMonthIndex,
+    decreaseMonthIndex,
+    setCalendarAfterGetFromServer,
+  } = useActions();
   const [isOpenDatePicker, setIsOpenDatePicker] = useState<boolean>(false);
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const rightArrowClickHandler = () => {
     increaseMonthIndex();
@@ -29,18 +35,24 @@ const Container = ({ calendar }: ContainerDataProps) => {
   };
 
   const modalOpenHandler = () => {
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
-    setCalendarAfterGetFromServer(calendar)
-  }, [calendar])
+    setCalendarAfterGetFromServer(calendar);
+  }, [calendar]);
 
   return (
     <div>
-      {isModalOpen && <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
-      <div className="flex p-2 justify-around h-[50px] items-center relative">
-        <Button variant="contained" onClick={modalOpenHandler} disabled={chosenDay === null}>
+      {isModalOpen && (
+        <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      )}
+      <div className="flex mt-2 p-2 justify-around h-[50px] items-center relative">
+        <Button
+          variant="contained"
+          onClick={modalOpenHandler}
+          disabled={chosenDay === null}
+        >
           <span className="text-3xl font-bold">+</span>
         </Button>
 

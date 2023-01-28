@@ -9,21 +9,22 @@ const DatePicker: FC<DatePickerProps> = ({ calendar }) => {
 
   return (
     <div className="z-10 w-[200px] h-auto p-2 absolute right-2 top-2 shadow-dp-1 bg-white text-bold text-black">
-      {calendar.length > 0 && calendar.map((m) => {
-        let sameMonth =
-          m.year === chosenMonth.year && m.month === chosenMonth.month;
-        return (
-          <p
-            key={m.year + m.month}
-            className={`${
-              sameMonth ? "bg-black text-white" : ""
-            } text-center rounded-xl my-1 cursor-pointer`}
-            onClick={() => setChosenMonth(m)}
-          >
-            {m.month} {m.year}
-          </p>
-        );
-      })}
+      {calendar.length > 0 &&
+        calendar.map((m) => {
+          let sameMonth =
+            m.year === chosenMonth.year && m.month === chosenMonth.month;
+          return (
+            <p
+              key={m.year + m.month}
+              className={`${
+                sameMonth ? "bg-black text-white" : ""
+              } text-center rounded-xl my-1 cursor-pointer`}
+              onClick={() => setChosenMonth(m)}
+            >
+              {m.month} {m.year}
+            </p>
+          );
+        })}
     </div>
   );
 };
