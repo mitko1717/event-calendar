@@ -10,18 +10,27 @@ const Calendar: FC = () => {
     <div className="w-[90%] m-auto mt-6 grid h-auto grid-cols-7 grid-rows-5 gap-1">
       {chosenMonth.days.map((day) => {
         return (
-          <p
+          <div
             key={day.index}
             className={`flex w-10% h-[150px] border border-solid border-black p-2 cursor-pointer ${
               chosenDay?.number === day.number ? "bg-white" : ""
             }`}
-            onClick={() => {setChosenDay(day)}}
+            onClick={() => {
+              setChosenDay(day);
+            }}
           >
             <div className="flex justify-between w-full">
               <span>{day.number}</span>
               <span>{day.day}</span>
             </div>
-          </p>
+            {day.events.length > 0 && (
+              <div>
+                {day.events.map((event) => {
+                  return <div key={event.id}>{event.title}</div>;
+                })}
+              </div>
+            )}
+          </div>
         );
       })}
     </div>

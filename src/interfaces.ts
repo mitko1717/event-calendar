@@ -1,7 +1,16 @@
+import { Dispatch, SetStateAction } from "react";
+
+export interface IEvent {
+  id: string;
+  title: string;
+  description: string;
+  time: Date;
+}
+
 export interface IDay {
   number: number;
   day: string;
-  events: string[];
+  events: IEvent[];
   index: number;
 }
 
@@ -23,3 +32,8 @@ export interface ContainerDataProps {
 export interface CalendarDataProps {
   calendar: IMonth[];
 }
+
+export type ModalProps = {
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+};

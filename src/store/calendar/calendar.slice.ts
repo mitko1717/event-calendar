@@ -1,4 +1,4 @@
-import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IMonth, IDay } from "@/interfaces";
 import { CALENDAR } from "../../../data/calendar";
 
@@ -12,7 +12,7 @@ interface State {
 const initialState: State = {
   chosenMonth: CALENDAR[0],
   monthIndex: 0,
-  calendar: CALENDAR,
+  calendar: [],
   chosenDay: null,
 };
 
@@ -22,17 +22,23 @@ export const calendarSlice = createSlice({
   reducers: {
     increaseMonthIndex(state) {
       state.monthIndex = state.monthIndex + 1;
-      state.chosenMonth = state.calendar[state.monthIndex];
+      state.chosenMonth = state?.calendar[state.monthIndex];
+      state.chosenDay = null
     },
     decreaseMonthIndex(state) {
       state.monthIndex = state.monthIndex - 1;
-      state.chosenMonth = state.calendar[state.monthIndex];
+      state.chosenMonth = state?.calendar[state.monthIndex];
+      state.chosenDay = null
     },
     setChosenMonth(state, action: PayloadAction<IMonth>) {
       state.chosenMonth = action.payload;
+      state.chosenDay = null
     },
-    setChosenDay(state, action: PayloadAction<IDay>) {    
-      state.chosenDay = action.payload;      
+    setCalendarAfterGetFromServer(state, action: PayloadAction<IMonth[]>) {
+      state.calendar = action.payload;
+    },
+    setChosenDay(state, action: PayloadAction<IDay>) {
+      state.chosenDay = action.payload;
     },
   },
 });

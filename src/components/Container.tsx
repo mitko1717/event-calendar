@@ -4,18 +4,17 @@ import DateIcon from "@/icons/Date";
 import { ContainerDataProps } from "@/interfaces";
 import { useAppSelector } from "../hooks/redux";
 import { useActions } from "../hooks/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "./DatePicker";
 import Calendar from "./Calendar";
 import Button from "@mui/material/Button/";
+import ModalForm from "./ModalForm";
 
 const Container = ({ calendar }: ContainerDataProps) => {
-  const { monthIndex, chosenMonth } = useAppSelector((state) => state.calendar);
-  const {
-    increaseMonthIndex,
-    decreaseMonthIndex,
-  } = useActions();
+  const { monthIndex, chosenMonth, chosenDay } = useAppSelector((state) => state.calendar);
+  const { increaseMonthIndex, decreaseMonthIndex, setCalendarAfterGetFromServer } = useActions();
   const [isOpenDatePicker, setIsOpenDatePicker] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const rightArrowClickHandler = () => {
     increaseMonthIndex();
@@ -29,10 +28,19 @@ const Container = ({ calendar }: ContainerDataProps) => {
     setIsOpenDatePicker((prev) => !prev);
   };
 
+  const modalOpenHandler = () => {
+    setIsModalOpen(true)
+  }
+
+  useEffect(() => {
+    setCalendarAfterGetFromServer(calendar)
+  }, [calendar])
+
   return (
     <div>
+      {isModalOpen && <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
       <div className="flex p-2 justify-around h-[50px] items-center relative">
-        <Button variant="contained">
+        <Button variant="contained" onClick={modalOpenHandler} disabled={chosenDay === null}>
           <span className="text-3xl font-bold">+</span>
         </Button>
 
@@ -58,7 +66,7 @@ const Container = ({ calendar }: ContainerDataProps) => {
             <ArrowRight />
           </span>
           <span
-            className="flex items-center border border-solid border-black mx-2 py-1 px-2 cursor-pointer"
+            className="flex items-center border border-solid border-black mx-2 py-1 px-2 cursor-pointer hover:opacity-50 transition ease-in-out duration-300"
             onClick={datePickerToggler}
           >
             <DateIcon />

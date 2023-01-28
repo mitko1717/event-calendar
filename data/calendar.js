@@ -560,7 +560,7 @@ export const CALENDAR = [
     ],
   },
   {
-    index: 1,
+    index: 4,
     month: "January",
     year: "2024",
     days: [
@@ -753,7 +753,7 @@ export const CALENDAR = [
     ],
   },
   {
-    index: 2,
+    index: 5,
     month: "February",
     year: "2024",
     days: [
@@ -937,7 +937,7 @@ export const CALENDAR = [
     ],
   },
   {
-    index: 3,
+    index: 6,
     month: "March",
     year: "2024",
     days: [
