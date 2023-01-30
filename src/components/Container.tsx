@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 import DatePicker from "./DatePicker";
 import Calendar from "./Calendar";
 import Button from "@mui/material/Button/";
-import ModalForm from "./ModalForm";
+import ModalFormAdd from "./ModalForm";
+import ModalFormEdit from "./ModalEdit"
 
 const Container = ({ calendar }: ContainerDataProps) => {
   const { monthIndex, chosenMonth, chosenDay } = useAppSelector(
@@ -21,6 +22,7 @@ const Container = ({ calendar }: ContainerDataProps) => {
   } = useActions();
   const [isOpenDatePicker, setIsOpenDatePicker] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalEditOpen, setIsModalEditOpen] = useState(false);
 
   const rightArrowClickHandler = () => {
     increaseMonthIndex();
@@ -45,8 +47,12 @@ const Container = ({ calendar }: ContainerDataProps) => {
   return (
     <div>
       {isModalOpen && (
-        <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <ModalFormAdd isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       )}
+      {isModalEditOpen && (
+        <ModalFormEdit isModalEditOpen={isModalEditOpen} setIsModalEditOpen={setIsModalEditOpen} />
+      )}
+
       <div className="flex mt-2 p-2 justify-around h-[50px] items-center relative">
         <Button
           variant="contained"

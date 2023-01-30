@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IMonth, IDay } from "@/interfaces";
+import { IMonth, IDay, IEvent } from "@/interfaces";
 import { CALENDAR } from "../../../data/calendar";
 
 interface State {
@@ -7,6 +7,7 @@ interface State {
   monthIndex: number;
   calendar: IMonth[];
   chosenDay: IDay | null;
+  chosenEvent: IEvent | null;
 }
 
 const initialState: State = {
@@ -14,6 +15,7 @@ const initialState: State = {
   monthIndex: 0,
   calendar: [],
   chosenDay: null,
+  chosenEvent: null,
 };
 
 export const calendarSlice = createSlice({
@@ -39,6 +41,17 @@ export const calendarSlice = createSlice({
     },
     setChosenDay(state, action: PayloadAction<IDay>) {
       state.chosenDay = action.payload;
+    },
+    pushEvent(state, action: PayloadAction<IEvent>) {          
+      let findMonth = state.calendar.find(month => month.month === state.chosenMonth.month && month.year === state.chosenMonth.year)
+      let findDay = findMonth?.days.find(d => d.number === state.chosenDay?.number)
+      findDay?.events.push(action.payload)
+
+      let monthChanged = state.calendar.find(month => month.month === state.chosenMonth.month && month.year === state.chosenMonth.year)
+      state.chosenMonth = monthChanged ? monthChanged : state.chosenMonth      
+    },
+    setChosenEvent(state, action: PayloadAction<IEvent>) {
+      state.chosenEvent = action.payload;
     },
   },
 });

@@ -3,8 +3,8 @@ import { DatePickerProps } from "@/interfaces";
 import { useActions } from "@/hooks/actions";
 import { useAppSelector } from "@/hooks/redux";
 
-const DatePicker: FC<DatePickerProps> = ({ calendar }) => {
-  const { chosenMonth } = useAppSelector((state) => state.calendar);
+const DatePicker: FC<DatePickerProps> = () => {
+  const { chosenMonth, calendar } = useAppSelector((state) => state.calendar);
   const { setChosenMonth } = useActions();
 
   return (

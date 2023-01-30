@@ -4,7 +4,10 @@ export interface IEvent {
   id: string;
   title: string;
   description: string;
-  time: Date;
+  time: string;
+  date: string
+  createdAt: Date;
+  uodatedAt?: Date;
 }
 
 export interface IDay {
@@ -33,10 +36,26 @@ export interface CalendarDataProps {
   calendar: IMonth[];
 }
 
+export interface EventProps {
+  event: IEvent;
+}
+export type ModalEditProps = {
+  isModalEditOpen: boolean;
+  setIsModalEditOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export type FormEditProps = {
+  setIsModalEditOpen: Dispatch<SetStateAction<boolean>>;
+}
+
 export type ModalProps = {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 };
+
+export type FormMProps = {
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+}
 
 export interface IData {
   January: number;

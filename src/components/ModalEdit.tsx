@@ -1,8 +1,8 @@
 import { Box, Modal } from "@mui/material";
 import React, { FC } from "react";
-import { ModalProps } from "@/interfaces";
+import { ModalEditProps, ModalProps } from "@/interfaces";
 import Button from "@mui/material/Button/";
-import FormM from "./FormAdd";
+import FormEdit from "./FormEdit";
 
 const style = {
   position: "absolute" as "absolute",
@@ -18,16 +18,16 @@ const style = {
   pb: 3,
 };
 
-const ModalFormAdd: FC<ModalProps> = ({ isModalOpen, setIsModalOpen }) => {
+const ModalFormEdit: FC<ModalEditProps> = ({ isModalEditOpen, setIsModalEditOpen }) => {
   const handleClose = () => {
-    setIsModalOpen(false);
+    setIsModalEditOpen(false);
   };
 
   return (
     <>
       <Modal
         hideBackdrop
-        open={isModalOpen}
+        open={isModalEditOpen}
         onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
@@ -39,11 +39,11 @@ const ModalFormAdd: FC<ModalProps> = ({ isModalOpen, setIsModalOpen }) => {
             </Button>
           </span>
           <h2 className="font-bold text-2xl">ADD NEW ITEM</h2>
-          <FormM setIsModalOpen={setIsModalOpen}/>
+          <FormEdit setIsModalEditOpen={setIsModalEditOpen}/>
         </Box>
       </Modal>
     </>
   );
 };
 
-export default ModalFormAdd;
+export default ModalFormEdit;

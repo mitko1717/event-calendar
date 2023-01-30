@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/hooks/redux";
 import { FC } from "react";
 import { useActions } from "../hooks/actions";
+import Event from "./Event";
 
 const Calendar: FC = () => {
   const { chosenMonth, chosenDay } = useAppSelector((state) => state.calendar);
@@ -12,8 +13,8 @@ const Calendar: FC = () => {
         return (
           <div
             key={day.index}
-            className={`flex w-10% h-[150px] border border-solid border-black p-2 cursor-pointer ${
-              chosenDay?.number === day.number ? "bg-white" : ""
+            className={`flex flex-col w-10% h-[150px] border border-solid border-black p-2 cursor-pointer ${
+              chosenDay?.number === day.number ? "bg-white text-black" : ""
             }`}
             onClick={() => {
               setChosenDay(day);
@@ -24,9 +25,9 @@ const Calendar: FC = () => {
               <span>{day.day}</span>
             </div>
             {day.events.length > 0 && (
-              <div>
+              <div className="overflow-scroll">
                 {day.events.map((event) => {
-                  return <div key={event.id}>{event.title}</div>;
+                  return <Event key={event.id} event={event}/>
                 })}
               </div>
             )}
