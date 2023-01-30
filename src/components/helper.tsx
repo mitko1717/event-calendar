@@ -6,7 +6,7 @@ export const DisplayFormikState = (props: object) => (
       style={{
         background: "#f6f8fa",
         fontSize: "2rem",
-        padding: ".5rem"
+        padding: ".5rem",
       }}
     >
       <strong>props</strong> = {JSON.stringify(props, null, 2)}

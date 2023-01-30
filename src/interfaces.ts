@@ -37,3 +37,18 @@ export type ModalProps = {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 };
+
+export interface IData {
+  January: number;
+  February: number;
+  March: number;
+  April: number;
+  May: number;
+  June: number;
+  July: number;
+  August: number;
+  September: number;
+  October: number;
+  November: number;
+  December: number;
+}

@@ -1,8 +1,8 @@
 import { Box, Modal } from "@mui/material";
 import React, { FC } from "react";
 import { ModalProps } from "@/interfaces";
-import FormikForm from "./Formik";
 import Button from "@mui/material/Button/";
+import FormM from "./Form";
 
 const style = {
   position: "absolute" as "absolute",
@@ -22,7 +22,7 @@ const ModalForm: FC<ModalProps> = ({ isModalOpen, setIsModalOpen }) => {
   const handleClose = () => {
     setIsModalOpen(false);
   };
-  
+
   return (
     <React.Fragment>
       <Modal
@@ -33,15 +33,12 @@ const ModalForm: FC<ModalProps> = ({ isModalOpen, setIsModalOpen }) => {
         aria-describedby="child-modal-description"
       >
         <Box sx={{ ...style, width: 500, height: 600 }}>
-        <span className="absolute top-2 right-2">
-        <Button
-          variant="contained"
-          onClick={handleClose}
-        >
-          <span className="text-2xl font-bold text-white">CLOSE</span>
-        </Button>
-        </span>
-          <FormikForm />
+          <span className="absolute top-2 right-2">
+            <Button variant="contained" onClick={handleClose}>
+              <span className="text-2xl font-bold text-gray-400">CLOSE</span>
+            </Button>
+          </span>
+          <FormM />
         </Box>
       </Modal>
     </React.Fragment>
