@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IYear, IMonth } from "@/interfaces";
+import { IMonth } from "@/interfaces";
 
 export const calendarApi = createApi({
   reducerPath: "github/api",
