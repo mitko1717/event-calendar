@@ -18,7 +18,10 @@ const style = {
   pb: 3,
 };
 
-const ModalFormEdit: FC<ModalEditProps> = ({ isModalEditOpen, setIsModalEditOpen }) => {
+const ModalFormEdit: FC<ModalEditProps> = ({
+  isModalEditOpen,
+  setIsModalEditOpen,
+}) => {
   const handleClose = () => {
     setIsModalEditOpen(false);
   };
@@ -38,8 +41,8 @@ const ModalFormEdit: FC<ModalEditProps> = ({ isModalEditOpen, setIsModalEditOpen
               <span className="text-2xl font-bold text-gray-400">CLOSE</span>
             </Button>
           </span>
-          <h2 className="font-bold text-2xl">ADD NEW ITEM</h2>
-          <FormEdit setIsModalEditOpen={setIsModalEditOpen}/>
+          <h2 className="font-bold text-2xl">EDIT IDEA ITEM</h2>
+          <FormEdit setIsModalEditOpen={setIsModalEditOpen} />
         </Box>
       </Modal>
     </>

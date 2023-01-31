@@ -39,7 +39,7 @@ const ModalFormAdd: FC<ModalProps> = ({ isModalOpen, setIsModalOpen }) => {
             </Button>
           </span>
           <h2 className="font-bold text-2xl">ADD NEW ITEM</h2>
-          <FormM setIsModalOpen={setIsModalOpen}/>
+          <FormM setIsModalOpen={setIsModalOpen} />
         </Box>
       </Modal>
     </>

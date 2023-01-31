@@ -759,63 +759,54 @@ export const CALENDAR = [
     days: [
       {
         number: 1,
-
         events: [],
         day: "Thu",
         index: 1,
       },
       {
         number: 2,
-
         events: [],
         day: "Fri",
         index: 2,
       },
       {
         number: 3,
-
         events: [],
         day: "Sat",
         index: 3,
       },
       {
         number: 4,
-
         events: [],
         day: "Sun",
         index: 4,
       },
       {
         number: 5,
-
         events: [],
         day: "Mon",
         index: 5,
       },
       {
         number: 6,
-
         events: [],
         day: "Tue",
         index: 6,
       },
       {
         number: 7,
-
         events: [],
         day: "Wed",
         index: 7,
       },
       {
         number: 8,
-
         events: [],
         day: "Thu",
         index: 8,
       },
       {
         number: 9,
-
         events: [],
         day: "Fri",
         index: 9,
@@ -933,6 +924,12 @@ export const CALENDAR = [
         events: [],
         day: "Wed",
         index: 28,
+      },
+      {
+        number: 29,
+        events: [],
+        day: "Thu",
+        index: 29,
       },
     ],
   },

@@ -9,7 +9,7 @@ import DatePicker from "./DatePicker";
 import Calendar from "./Calendar";
 import Button from "@mui/material/Button/";
 import ModalFormAdd from "./ModalForm";
-import ModalFormEdit from "./ModalEdit"
+import ModalFormEdit from "./ModalEdit";
 
 const Container = ({ calendar }: ContainerDataProps) => {
   const { monthIndex, chosenMonth, chosenDay } = useAppSelector(
@@ -47,10 +47,16 @@ const Container = ({ calendar }: ContainerDataProps) => {
   return (
     <div>
       {isModalOpen && (
-        <ModalFormAdd isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <ModalFormAdd
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       )}
       {isModalEditOpen && (
-        <ModalFormEdit isModalEditOpen={isModalEditOpen} setIsModalEditOpen={setIsModalEditOpen} />
+        <ModalFormEdit
+          isModalEditOpen={isModalEditOpen}
+          setIsModalEditOpen={setIsModalEditOpen}
+        />
       )}
 
       <div className="flex mt-2 p-2 justify-around h-[50px] items-center relative">
@@ -93,7 +99,7 @@ const Container = ({ calendar }: ContainerDataProps) => {
         </div>
       </div>
 
-      <Calendar />
+      <Calendar setIsModalEditOpen={setIsModalEditOpen} />
     </div>
   );
 };

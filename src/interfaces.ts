@@ -1,13 +1,21 @@
 import { Dispatch, SetStateAction } from "react";
 
+export interface IState {
+  chosenMonth: IMonth;
+  monthIndex: number;
+  calendar: IMonth[];
+  chosenDay: IDay | null;
+  chosenEvent: IEvent | null;
+}
+
 export interface IEvent {
   id: string;
   title: string;
   description: string;
-  time: string;
-  date: string
-  createdAt: Date;
-  uodatedAt?: Date;
+  time?: string;
+  date?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface IDay {
@@ -38,6 +46,8 @@ export interface CalendarDataProps {
 
 export interface EventProps {
   event: IEvent;
+  setIsModalEditOpen: Dispatch<SetStateAction<boolean>>;
+  day: IDay;
 }
 export type ModalEditProps = {
   isModalEditOpen: boolean;
@@ -46,7 +56,11 @@ export type ModalEditProps = {
 
 export type FormEditProps = {
   setIsModalEditOpen: Dispatch<SetStateAction<boolean>>;
-}
+};
+
+export type CalendarProps = {
+  setIsModalEditOpen: Dispatch<SetStateAction<boolean>>;
+};
 
 export type ModalProps = {
   isModalOpen: boolean;
@@ -55,7 +69,7 @@ export type ModalProps = {
 
 export type FormMProps = {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
-}
+};
 
 export interface IData {
   January: number;

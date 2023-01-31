@@ -1,9 +1,10 @@
 import { useAppSelector } from "@/hooks/redux";
+import { CalendarProps } from "@/interfaces";
 import { FC } from "react";
 import { useActions } from "../hooks/actions";
 import Event from "./Event";
 
-const Calendar: FC = () => {
+const Calendar: FC<CalendarProps> = ({ setIsModalEditOpen }) => {
   const { chosenMonth, chosenDay } = useAppSelector((state) => state.calendar);
   const { setChosenDay } = useActions();
 
@@ -27,7 +28,14 @@ const Calendar: FC = () => {
             {day.events.length > 0 && (
               <div className="overflow-scroll">
                 {day.events.map((event) => {
-                  return <Event key={event.id} event={event}/>
+                  return (
+                    <Event
+                      key={event.id}
+                      event={event}
+                      setIsModalEditOpen={setIsModalEditOpen}
+                      day={day}
+                    />
+                  );
                 })}
               </div>
             )}

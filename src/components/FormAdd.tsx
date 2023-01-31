@@ -5,9 +5,7 @@ import { ChangeEvent, FormEvent, FC, useState } from "react";
 
 const FormM: FC<FormMProps> = ({ setIsModalOpen }) => {
   const { chosenMonth, chosenDay } = useAppSelector((state) => state.calendar);
-  const {
-    pushEvent
-  } = useActions();
+  const { pushEvent } = useActions();
   const [title, setTitle] = useState<string>("");
   const [time, setTime] = useState<string>("12:00");
   const [description, setDescription] = useState<string>("");
@@ -21,20 +19,27 @@ const FormM: FC<FormMProps> = ({ setIsModalOpen }) => {
     setTime(e.target.value);
   };
 
-  const handleChangeDesc = (e: ChangeEvent<HTMLInputElement>) => {      
+  const handleChangeDesc = (e: ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value);
   };
 
   const sendEventHadler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    pushEvent({title, time, description, date, id: Math.random().toString(), createdAt: new Date()})
-    setIsModalOpen(false)
-  }  
+    e.preventDefault();
+    pushEvent({
+      title,
+      time,
+      description,
+      date,
+      id: Math.random().toString(),
+      createdAt: new Date().toString(),
+    });
+    setIsModalOpen(false);
+  };
 
   return (
     <form className="outlined-none border-none" onSubmit={sendEventHadler}>
       <div className="mt-8">
-        <label htmlFor="title" className="font-bold"/>
+        <label htmlFor="title" className="font-bold" />
         <input
           className="border border-solid my-2 p-1 w-full"
           type="text"
@@ -60,7 +65,9 @@ const FormM: FC<FormMProps> = ({ setIsModalOpen }) => {
         />
       </div>
       <div className="mt-2">
-        <label htmlFor="date"className="font-bold">Date:</label>
+        <label htmlFor="date" className="font-bold">
+          Date:
+        </label>
         <input
           type="date"
           id="date"
@@ -72,7 +79,9 @@ const FormM: FC<FormMProps> = ({ setIsModalOpen }) => {
       </div>
 
       <div>
-        <label htmlFor="time"className="font-bold">Time:</label>
+        <label htmlFor="time" className="font-bold">
+          Time:
+        </label>
         <input
           type="time"
           id="time"
@@ -87,9 +96,12 @@ const FormM: FC<FormMProps> = ({ setIsModalOpen }) => {
       </div>
 
       <div>
-        <input type="submit" value="SAVE" className="border py-1 px-3 font-bold mt-4 cursor-pointer hover:bg-slate-200 transition ease-in-out duration-300"/>
-      </div>  
-
+        <input
+          type="submit"
+          value="SAVE"
+          className="border py-1 px-3 font-bold mt-4 cursor-pointer hover:bg-slate-200 transition ease-in-out duration-300"
+        />
+      </div>
     </form>
   );
 };
@@ -97,27 +109,23 @@ const FormM: FC<FormMProps> = ({ setIsModalOpen }) => {
 export default FormM;
 
 const setDateHandler = (chosenMonth: IMonth, chosenDay: IDay | null) => {
-    const todayDate = new Date(
-      +chosenMonth.year,
-      getMonthNumber(chosenMonth.month) + 1,
-      chosenDay?.number
-    );
-    const formatDate =
-      todayDate.getDate() < 10
-        ? `0${todayDate.getDate()}`
-        : todayDate.getDate();
-    const formatMonth =
-      todayDate.getMonth() < 10
-        ? `0${todayDate.getMonth()}`
-        : todayDate.getMonth();
-    const formattedDate = [
-      todayDate.getFullYear(),
-      formatMonth,
-      formatDate,
-    ].join("-");
+  const todayDate = new Date(
+    +chosenMonth.year,
+    getMonthNumber(chosenMonth.month) + 1,
+    chosenDay?.number
+  );
+  const formatDate =
+    todayDate.getDate() < 10 ? `0${todayDate.getDate()}` : todayDate.getDate();
+  const formatMonth =
+    todayDate.getMonth() < 10
+      ? `0${todayDate.getMonth()}`
+      : todayDate.getMonth();
+  const formattedDate = [todayDate.getFullYear(), formatMonth, formatDate].join(
+    "-"
+  );
 
-    return formattedDate;
-  };
+  return formattedDate;
+};
 
 const getMonthNumber = (key: string) => {
   const DATA: IData = {
